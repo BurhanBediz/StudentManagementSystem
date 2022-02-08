@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Öğrenci Yönetim Sistemi</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-dark navbar-fixed-top bg-dark" >
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Öğrenci Yönetim Sistemi</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a class="nav-link" th:href="@{/students}">Öğrenci Yönetimi</a></li>
+   
+    </ul>
+  </div>
+</nav>
+	<div class="container">
+		<div class="row">
+			<h1>Öğrenci Listesi</h1>
+		
+		</div>
+		<div class="row">
+			<div class="col-lg-3">
+				<a th:href="@{/students/new}" class="btn btn-primary btn-sm mb-3">Öğrenci Ekle</a>
+			</div>
+		
+		</div>
+		
+		<table class="table table table-striped table-bordered">
+			<thead class="table-dark">
+				<tr>
+					<th>Öğrenci İsmi</th>
+					<th>Öğrenci Soyismi</th>
+					<th>Öğrenci E-Mail</th>
+					<th>İşlemler</th>
+				</tr>
+				
+			</thead>
+			
+			<tbody>
+				<tr th:each="student:${students}">
+					<td th:text="${student.firstName}">
+					<td th:text="${student.lastName}">
+					<td th:text="${student.email}">
+					<td>
+						<a th:href="@{/students/edit/{id} (id=${student.id})}" class="btn btn-primary">Güncelle</a>
+						<a th:href="@{/students/{id} (id=${student.id})}" class="btn btn-danger">Kayıt Sil</a>
+					</td>
+				</tr>
+			
+			</tbody>
+		</table> 
+	
+	</div>
+
+</body>
+</html>
